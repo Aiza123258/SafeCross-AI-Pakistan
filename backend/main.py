@@ -1,4 +1,7 @@
-from fastapi import FastAPI, Depends
+import traceback
+
+from fastapi import FastAPI, Depends, Request
+from fastapi.responses import JSONResponse
 from pydantic import BaseModel
 from typing import Optional
 from sqlalchemy.orm import Session
@@ -18,6 +21,20 @@ app = FastAPI(
     description="AI-powered road accident prediction and safety backend",
     version="1.0.0"
 )
+
+
+# Temporary debug handler: surfaces the real Python traceback in the
+# response body instead of a bare "Internal Server Error", since Streamlit
+# Cloud gives no shell access to read server-side logs directly.
+@app.exception_handler(Exception)
+async def debug_exception_handler(request: Request, exc: Exception):
+    return JSONResponse(
+        status_code=500,
+        content={
+            "error": str(exc),
+            "traceback": traceback.format_exc(),
+        },
+    )
 
 
 class SeverityRequest(BaseModel):
