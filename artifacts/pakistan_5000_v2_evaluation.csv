@@ -1,0 +1,5 @@
+model,train_time_sec,val_accuracy,test_accuracy,val_f1_weighted,test_f1_weighted,val_f1_macro,test_f1_macro
+CatBoost,8.69,0.968,0.9587,0.9681,0.9588,0.9671,0.958
+XGBoost,5.61,0.9773,0.9627,0.9774,0.9628,0.9764,0.9616
+HistGradientBoosting,10.96,0.9867,0.9853,0.9867,0.9854,0.9859,0.985
+RandomForest,2.51,0.8987,0.8787,0.8979,0.878,0.8974,0.878

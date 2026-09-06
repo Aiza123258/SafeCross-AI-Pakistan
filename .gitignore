@@ -1,0 +1,73 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+venv/
+ENV/
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Jupyter Notebook
+.ipynb_checkpoints
+
+# Environment
+.env
+.venv
+
+# Logs
+*.log
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Development files
+investigate_*.py
+*_audit.py
+*_comparison.py
+save_best_*.py
+test_*.py
+FINAL_SUMMARY.md
+DEPLOYMENT_READINESS.md
+
+# Old model files (not needed for deployment)
+artifacts/severity_model.pkl
+artifacts/severity_model_advanced.pkl
+artifacts/severity_model_best.pkl
+artifacts/encoders_advanced.pkl
+artifacts/encoders_best.pkl
+artifacts/feature_meta_advanced.pkl
+artifacts/feature_meta_best.pkl
+artifacts/_investigation_*.pkl
+artifacts/evaluation_report.txt
+artifacts/investigation_report.txt
+artifacts/confusion_matrix_*.png
+
+# CatBoost training logs
+catboost_info/
+CLEANUP_SUMMARY.md
+
+safecross.db
