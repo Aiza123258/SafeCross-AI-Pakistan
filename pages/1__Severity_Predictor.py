@@ -390,164 +390,48 @@ if st.button(
 
 
         # ----------------------------------------------------
-        # Main Severity Card
+               # ----------------------------------------------------
+        # Prediction Result Cards
         # ----------------------------------------------------
 
-        severity_color = get_severity_color(
-            result["severity"]
-        )
-
+        severity_color = get_severity_color(result["severity"])
         confidence_pct = result["confidence"] * 100
-
 
         col1, col2, col3 = st.columns([2, 1, 1])
 
-
         with col1:
-
+            st.markdown("**Predicted Severity**")
             st.markdown(
-                f"""
-                <div class="metric-card"
-                     style="border-left: 4px solid {severity_color};">
-
-                    <h3 style="
-                        margin:0;
-                        color:#6b7280;
-                        font-size:0.9rem;
-                    ">
-                        Predicted Severity
-                    </h3>
-
-                    <h1 style="
-                        margin:0.5rem 0;
-                        color:{severity_color};
-                        font-size:2.5rem;
-                    ">
-                        {result['severity']}
-                    </h1>
-
-                    <p style="
-                        margin:0;
-                        color:#6b7280;
-                    ">
-                        Risk Score:
-                        <strong>
-                            {result['risk_score']:.1f}/100
-                        </strong>
-                    </p>
-
-                    <p style="
-                        margin:0.4rem 0 0 0;
-                        color:#6b7280;
-                        font-size:0.85rem;
-                    ">
-                        Prediction ID:
-                        <strong>
-                            #{prediction_id}
-                        </strong>
-                    </p>
-
-                </div>
-                """,
-                unsafe_allow_html=True
+                f"## {result['severity']}"
             )
-
-
-        # ----------------------------------------------------
-        # Risk Level
-        # ----------------------------------------------------
+            st.write(
+                f"Risk Score: **{result['risk_score']:.1f}/100**"
+            )
+            st.caption(f"Prediction ID: #{prediction_id}")
 
         with col2:
-
             risk_color = result["risk_color"]
 
+            st.markdown("**Risk Level**")
             st.markdown(
-                f"""
-                <div class="metric-card"
-                     style="border-left: 4px solid {risk_color};">
-
-                    <h3 style="
-                        margin:0;
-                        color:#6b7280;
-                        font-size:0.9rem;
-                    ">
-                        Risk Level
-                    </h3>
-
-                    <h2 style="
-                        margin:0.5rem 0;
-                        color:{risk_color};
-                        font-size:2rem;
-                    ">
-                        {result['risk_level']}
-                    </h2>
-
-                </div>
-                """,
-                unsafe_allow_html=True
+                f"## {result['risk_level']}"
             )
-
-
-        # ----------------------------------------------------
-        # Confidence
-        # ----------------------------------------------------
 
         with col3:
-
             if confidence_pct >= 70:
-
-                conf_color = "#10b981"
                 conf_text = "High"
-
             elif confidence_pct >= 50:
-
-                conf_color = "#f59e0b"
                 conf_text = "Medium"
-
             else:
-
-                conf_color = "#ef4444"
                 conf_text = "Low"
 
-
+            st.markdown("**Model Confidence**")
             st.markdown(
-                f"""
-                <div class="metric-card"
-                     style="border-left: 4px solid {conf_color};">
-
-                    <h3 style="
-                        margin:0;
-                        color:#6b7280;
-                        font-size:0.9rem;
-                    ">
-                        Model Confidence
-                    </h3>
-
-                    <h2 style="
-                        margin:0.5rem 0;
-                        color:{conf_color};
-                        font-size:2rem;
-                    ">
-                        {confidence_pct:.1f}%
-                    </h2>
-
-                    <p style="
-                        margin:0;
-                        color:#6b7280;
-                        font-size:0.85rem;
-                    ">
-                        {conf_text}
-                    </p>
-
-                </div>
-                """,
-                unsafe_allow_html=True
+                f"## {confidence_pct:.1f}%"
             )
-
+            st.caption(conf_text)
 
         st.markdown("---")
-
-
         # ====================================================
         # PROBABILITY DISTRIBUTION
         # ====================================================
