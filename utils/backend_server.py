@@ -30,7 +30,10 @@ def ensure_backend_running() -> bool:
     env = os.environ.copy()
     env["PYTHONUNBUFFERED"] = "1"
 
+    log_path = root / "backend_error.log"
+
     try:
+        log_file = open(log_path, "a")
         subprocess.Popen(
             [
                 sys.executable,
@@ -44,8 +47,8 @@ def ensure_backend_running() -> bool:
             ],
             cwd=str(root),
             env=env,
-            stdout=subprocess.DEVNULL,
-            stderr=subprocess.DEVNULL,
+            stdout=log_file,
+            stderr=log_file,
             start_new_session=True,
         )
     except Exception:
